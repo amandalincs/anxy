@@ -1,6 +1,6 @@
 import mysql.connector as mysql
 
-def db_connect():
+def db_connect_():
     con = mysql.connect(
         host = "mysql-dev",
         port = "3306",
@@ -11,7 +11,7 @@ def db_connect():
     cur = con.cursor()
     return con, cur
 
-def db_connect_dev():
+def db_connect():
     con = mysql.connect(
         host = "127.0.0.1",
         port = "3308",
@@ -133,3 +133,17 @@ def db_delete_post(p_id):
     con.commit()
 
     db_close(con, cur)
+
+def db_get_posts_by_date(month, day, year):
+    con, cur = db_connect()
+    date_str = f"{year}-{month}-{day}"
+    print(date_str)
+    get_stmt = ("SELECT * FROM posts "
+                "WHERE day < (%s)")
+    
+    cur.execute(get_stmt, (date_str,))
+    day_posts = cur.fetchall()
+    print(day_posts)
+
+    db_close(con, cur)
+    return day_posts

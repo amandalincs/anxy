@@ -1,7 +1,7 @@
 from flask import jsonify, request, abort, make_response
 
 from api import app
-from .models import db_get_all_cat, db_get_cat, db_create_cat, db_edit_cat, db_delete_cat, db_get_all_posts, db_get_post, db_create_post, db_edit_post, db_delete_post
+from .models import db_get_all_cat, db_get_cat, db_create_cat, db_edit_cat, db_delete_cat, db_get_all_posts, db_get_post, db_create_post, db_edit_post, db_delete_post,  db_get_posts_by_date
 
 
 @app.errorhandler(404)
@@ -72,6 +72,7 @@ def delete_category(category_id):
 def get_all_posts():
     posts = db_get_all_posts()
     json = []
+    print(posts)
     for id, date, bothering, c_id, goal, done in posts:
         temp = {}
         temp['id'] = id
@@ -101,16 +102,22 @@ def get_post(post_id):
     
 @app.route("/api/posts/", methods=['POST'])
 def add_post():
+    print("adding..")
+
     if not request.json:
-        abort(400)
+        print("not a json")
+        #abort(400)
     if 'bothering' not in request.json:
-        abort(400)
+        print("bothering")
+        #abort(400)
     if 'c_id' not in request.json:
-        abort(400)
+        print("c_id")
+        #abort(400)
     if 'goal' not in request.json:
-        abort(400)
+        print("goal")
+        #abort(400)
     
-    db_create_post(request.json['bothering'], request.json['c_id'], request.json['goal'])
+    db_create_post(request.json['bothering'], int(request.json['c_id']), request.json['goal'])
 
     return jsonify({"Results":"True"}), 201
     
@@ -134,6 +141,17 @@ def edit_post(post_id):
 
     return jsonify({"Results":"True"})
     
-
 # @app.route("/api/posts/", methods=['DELETE'])
 
+@app.route("/api/posts/<int:month>/<int:day>/<int:year>", methods=['GET'])
+def get_posts_by_date(month, day, year):
+    posts = db_get_posts_by_date(month, day, year)
+    json = []
+    for _,_,bothering,c_id,goal,_ in posts:
+        temp = {}
+        temp['bothering'] = bothering
+        temp['category_id'] = c_id
+        temp['goal'] = goal
+        json.append(temp)
+    
+    return jsonify({'posts':json})
