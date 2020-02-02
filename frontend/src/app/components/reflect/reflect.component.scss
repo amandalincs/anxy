@@ -1,0 +1,14 @@
+.reflect-container {
+    display: flex;
+    height: 100%;
+    padding-top: 20vh;
+    margin-bottom: 0vh;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-bottom: 8vh;
+    
+    canvas {
+        height: 100%;
+        width: 100%;
+    }
+}
