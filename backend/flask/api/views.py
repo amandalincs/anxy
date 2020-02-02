@@ -1,7 +1,7 @@
 from flask import jsonify, request, abort, make_response
 
 from api import app
-from .models import get_all_cat, get_cat, create_cat, edit_cat, delete_cat
+from .models import db_get_all_cat, db_get_cat, db_create_cat, db_edit_cat, db_delete_cat
 
 
 @app.errorhandler(404)
@@ -21,7 +21,7 @@ def get_stuff():
 ##### categories #####
 @app.route("/api/categories/", methods=['GET'])
 def get_all_categories():
-    categories = get_all_cat()
+    categories = db_get_all_cat()
     json = []
     for id, name in categories:
         temp = {}
@@ -33,7 +33,7 @@ def get_all_categories():
 
 @app.route("/api/categories/<int:category_id>", methods=['GET'])
 def get_category(category_id):
-    category = get_cat(category_id)
+    category = db_get_cat(category_id)
     if not category:
         abort(404)
     json = {}
@@ -44,9 +44,8 @@ def get_category(category_id):
 @app.route("/api/categories/", methods=['POST'])
 def add_category():
     if not request.json or 'name' not in request.json:
-        print(request.json)
         abort(400)
-    create_cat(request.json['name'])
+    db_create_cat(request.json['name'])
 
     return jsonify({"Result":"True"}), 201
 
@@ -54,25 +53,36 @@ def add_category():
 def edit_category(cat_id):
     if not request.json or 'name' not in request.json:
         abort(400)
-    if not get_cat(cat_id):
+    if not db_get_cat(cat_id):
         abort(404)
-    edit_cat(cat_id,request.json['name'])
+    db_edit_cat(cat_id,request.json['name'])
     json = {'id':cat_id, 'name':request.json['name']}
 
     return jsonify({"categories":[json]})
 
 @app.route("/api/categories/<int:cat_id>", methods=['DELETE'])
 def delete_category(cat_id):
-    if not get_cat(cat_id):
+    if not db_get_cat(cat_id):
         abort(404)
-    delete_cat(cat_id)
+    db_delete_cat(cat_id)
 
     return jsonify({"Results":"True"})
 
 ##### posts #####
 @app.route("/api/posts/", methods=['GET'])
 def get_all_posts():
-    pass
+    posts = get_posts()
+    json = []
+    for id, date, bothering, c_id, goal, done in posts:
+        temp = {}
+        temp['id'] = id
+        temp['bothering'] = bothering
+        temp['category_id'] = c_id
+        temp['goal'] = goal
+        temp['done'] = done
+        json.append(temp)
+
+    return jsonify({'posts':json})
 
 @app.route("/api/posts/<int:post_id>", methods=['GET'])
 def get_post(post_id):
