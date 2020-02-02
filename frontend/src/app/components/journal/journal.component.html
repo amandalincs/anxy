@@ -1,4 +1,78 @@
 <div class="journal-container">
-    <div class="treeview-container">
-    </div>
+    <ul id="days-list" class="list-group">
+        <li id="day1" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+                <div class="title-container">
+                    <i class="fas fa-sun"></i>
+                    <div class="day">sunday</div>
+                    <div class="date">2/1/20</div>
+                    <button class="btn btn-outline-secondary" (click)="addEntryRow()" type="button"><i class="fas fa-plus"></i></button>
+                </div>
+                <small>today</small>
+            </div>
+            <div id ="entry1" class="entry-row">
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="feelings-container">
+                        <div class="feelings-header">what's making you anxious?</div>
+                        <div class="input-group mb-3">
+                            <input id="input1" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
+                        </div>
+                    </div>
+                    <div class="category-container">
+                        <div class="category-header">select a category</div>
+                        <select id="category1" class="custom-select" multiple>
+                            <option value="school">school</option>
+                            <option value="money">money</option>
+                            <option value="love">love</option>
+                        </select>
+                    </div>
+                    <div class="fix-container">
+                        <div class="fix-header">how can you approach this?</div>
+                        <div class="input-group mb-3">
+                            <input id="fix1" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
+                        </div>
+                    </div>
+                    <div class="save-container">
+                        <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <!-- <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">saturday</h5>
+            <small class="text-muted">yesterday</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          <small class="text-muted">Donec id elit non mi porta.</small>
+        </li>
+
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">2 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          <small class="text-muted">Donec id elit non mi porta.</small>
+        </li>
+
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">List group item heading</h5>
+              <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+          </li>
+
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">4 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+        </li> -->
+    </ul>
 </div>
