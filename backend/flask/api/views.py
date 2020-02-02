@@ -1,7 +1,7 @@
 from flask import jsonify, request, abort, make_response
 
 from api import app
-from .models import db_get_all_cat, db_get_cat, db_create_cat, db_edit_cat, db_delete_cat
+from .models import db_get_all_cat, db_get_cat, db_create_cat, db_edit_cat, db_delete_cat, db_get_all_posts, db_get_post, db_create_post, db_edit_post, db_delete_post
 
 
 @app.errorhandler(404)
@@ -50,32 +50,32 @@ def add_category():
     return jsonify({"Result":"True"}), 201
 
 @app.route("/api/categories/<int:cat_id>", methods=['PUT'])
-def edit_category(cat_id):
+def edit_category(category_id):
     if not request.json or 'name' not in request.json:
         abort(400)
-    if not db_get_cat(cat_id):
+    if not db_get_cat(category_id):
         abort(404)
-    db_edit_cat(cat_id,request.json['name'])
-    json = {'id':cat_id, 'name':request.json['name']}
+    db_edit_cat(category_id,request.json['name'])
 
-    return jsonify({"categories":[json]})
+    return jsonify({"Results":"True"})
 
 @app.route("/api/categories/<int:cat_id>", methods=['DELETE'])
-def delete_category(cat_id):
-    if not db_get_cat(cat_id):
+def delete_category(category_id):
+    if not db_get_cat(category_id):
         abort(404)
-    db_delete_cat(cat_id)
+    db_delete_cat(category_id)
 
     return jsonify({"Results":"True"})
 
 ##### posts #####
 @app.route("/api/posts/", methods=['GET'])
 def get_all_posts():
-    posts = get_posts()
+    posts = db_get_all_posts()
     json = []
     for id, date, bothering, c_id, goal, done in posts:
         temp = {}
         temp['id'] = id
+        temp['date'] = date
         temp['bothering'] = bothering
         temp['category_id'] = c_id
         temp['goal'] = goal
@@ -86,15 +86,54 @@ def get_all_posts():
 
 @app.route("/api/posts/<int:post_id>", methods=['GET'])
 def get_post(post_id):
-    pass
+    post = db_get_post(post_id)
+    if not post:
+        abort(404)
+    json = {}
+    json['id'] = post[0][0]
+    json['date'] = post[0][1]
+    json['bothering'] = post[0][2]
+    json['category_id'] = post[0][3]
+    json['goal'] = post[0][4]
+    json['done'] = post[0][5]
 
+    return jsonify({'posts':[json]})
+    
 @app.route("/api/posts/", methods=['POST'])
 def add_post():
-    pass
+    if not request.json:
+        abort(400)
+    if 'bothering' not in request.json:
+        abort(400)
+    if 'c_id' not in request.json:
+        abort(400)
+    if 'goal' not in request.json:
+        abort(400)
+    
+    db_create_post(request.json['bothering'], request.json['c_id'], request.json['goal'])
 
+    return jsonify({"Results":"True"}), 201
+    
 @app.route("/api/posts/<int:post_id>", methods=['PUT'])
 def edit_post(post_id):
-    pass
+    if not request.json:
+        abort(400)
+    if 'bothering' not in request.json:
+        abort(400)
+    if 'c_id' not in request.json:
+        abort(400)
+    if 'goal' not in request.json:
+        abort(400)
+    if 'done' not in request.json:
+        abort(400)
+    
+    if not db_get_post(post_id):
+        abort(404)
+
+    db_edit_post(post_id,request.json['bothering'],request.json['c_id'],request.json['goal'],request.json['done'])
+
+    return jsonify({"Results":"True"})
+    
 
 # @app.route("/api/posts/", methods=['DELETE'])
 

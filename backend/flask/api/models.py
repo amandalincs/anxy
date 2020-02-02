@@ -1,8 +1,8 @@
 import mysql.connector as mysql
 
-def db_connect_prod():
+def db_connect():
     con = mysql.connect(
-        host = "flask",
+        host = "mysql-dev",
         port = "3306",
         user = "root",
         password = "password",
@@ -11,7 +11,7 @@ def db_connect_prod():
     cur = con.cursor()
     return con, cur
 
-def db_connect():
+def db_connect_dev():
     con = mysql.connect(
         host = "127.0.0.1",
         port = "3308",
@@ -105,8 +105,8 @@ def db_get_post(post_id):
 
 def db_create_post(bothering, c_id, goal):
     con, cur = db_connect()
-    insert_stmt = ("INSERT INTO posts(Date, bothering, c_id, goal, done) "
-                    "VALUES(CURDATE(), (%s), (%s), (%s), false)")
+    insert_stmt = ("INSERT INTO posts(day, bothering, c_id, goal, done) "
+                    "VALUES(DATE(CURDATE()), (%s), (%s), (%s), false)")
     
     cur.execute(insert_stmt, (bothering,c_id,goal))
     con.commit()

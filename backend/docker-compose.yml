@@ -10,19 +10,21 @@ services:
     restart: always
     ports:
       - "3308:3306"
+    expose:
+      - "3306"
     volumes:
       - "./mysql/volumes/:/var/lib/mysql"
   
-  # flask:
-  #   build: ./flask
-  #   container_name: flask
-  #   # restart: always
-  #   environment:
-  #     - FLASK_APP=run.py
-  #   ports:
-  #     - "5000:5000"
-  #   # expose:
-  #   #   - "8000"
+  flask:
+    build: ./flask
+    container_name: flask
+    # restart: always
+    environment:
+      - FLASK_APP=run.py
+    ports:
+      - "5000:5000"
+    # expose:
+    #   - "8000"
     
     
   # nginx:
