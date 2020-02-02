@@ -25,6 +25,7 @@ export class ReflectComponent implements OnInit {
     posts = [];
 
     ngOnInit(){
+      
         this.httpService.get(this.ROOT_URL+'/posts/').subscribe(
             data => {
                 for (var key in data) {
@@ -42,7 +43,7 @@ export class ReflectComponent implements OnInit {
                 console.log (err.message);
             }
         );
-        console.log(this.chartData);
+        // console.log(this.chartData);
         this.showChart();
     }
 
