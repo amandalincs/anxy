@@ -30,15 +30,13 @@ export class JournalComponent implements OnInit {
         console.log(JSON.stringify(userData));
         
         this.http.post(this.ROOT_URL+'/posts/', userData).subscribe();
-
-        // fetch('http://localhost:5000/api/posts/',{
-        //     method: 'POST',
-        //     body: JSON.stringify(userData)
-        // }).then(response =>{
-
-        // }).catch(error=>{console.log(error)});
-        
     }
+
+    // getDayPosts()
+    // {
+    //     this.http.get(this.ROOT_URL+"/posts/2/2/2020")
+    //     // this.http.get(this.ROOT_URL+"/posts/"+month.toString()+"/"+day.toString()+"/"+year.toString())
+    // }
 
     addEntryRow()
     {
