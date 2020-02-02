@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
     selector: 'app-journal',
@@ -8,7 +9,10 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 })
 
 export class JournalComponent implements OnInit {
-    constructor(){}
+
+    readonly ROOT_URL = 'http://127.0.0.1:5000/api';
+    newPost: any;
+    constructor(private http : HttpClient) {}
 
     ngOnInit(){}
 
@@ -19,18 +23,20 @@ export class JournalComponent implements OnInit {
         let userFix = (<HTMLInputElement>document.getElementById('fix1')).value;
         let userData = {
             bothering: userFeelings,
-            category: userCategory,
+            c_id: userCategory,
             goal: userFix
         };
 
-        console.log(userData);
+        console.log(JSON.stringify(userData));
+        
+        this.http.post(this.ROOT_URL+'/posts/', userData).subscribe();
 
-        // fetch('http://localhost:5000/api/categories/dfxer45tft/',{
+        // fetch('http://localhost:5000/api/posts/',{
         //     method: 'POST',
         //     body: JSON.stringify(userData)
         // }).then(response =>{
 
-        // });
+        // }).catch(error=>{console.log(error)});
         
     }
 
