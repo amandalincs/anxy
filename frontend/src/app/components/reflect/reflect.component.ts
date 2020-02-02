@@ -22,6 +22,8 @@ export class ReflectComponent implements OnInit {
 
     chartData = [];
 
+    countData = [0, 0, 0, 0, 0, 0];
+
     posts = [];
 
     ngOnInit(){
@@ -36,19 +38,48 @@ export class ReflectComponent implements OnInit {
                     var val = this.posts[post];
                     // console.log(val['category_id']);
                     this.chartData.push(val['category_id']);
+                    // console.log(val['category_id']);
                 }
             } 
+                for (var i = 0; i < this.chartData.length; i++)
+                {
+                    var item = this.chartData[i];
+                    if (item == 1)
+                    {
+                      console.log("BING");
+                      this.countData[0]++;
+                    }
+                    else if (item == 3)
+                    {
+                      this.countData[1]++;
+                    }
+                    else if (item == 4)
+                    {
+                      this.countData[2]++;
+                    }
+                    else if (item == 5)
+                    {
+                      this.countData[3]++;
+                    }
+                    else if (item == 6)
+                    {
+                      this.countData[4]++;
+                    }
+                    else if (item == 7)
+                    {
+                      this.countData[5]++;
+                    }
+                }
+
+            console.log(this.countData);
+
             },
             (err: HttpErrorResponse) => {
                 console.log (err.message);
             }
         );
-        // console.log(this.chartData);
-        this.showChart();
-    }
 
-    onChartClick(event) {
-        console.log(event);
+        this.showChart();
     }
 
 
@@ -60,7 +91,7 @@ export class ReflectComponent implements OnInit {
           datasets: [
             {
               label: '# of anxious moments',
-              data: this.chartData, // your data array
+              data: this.countData, // your data array
               backgroundColor: [
                'rgba(54, 162, 235, 1)',
                'rgba(255, 99, 132, 1)',
