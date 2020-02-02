@@ -20,7 +20,7 @@
                     </div>
                     <div class="category-container">
                         <div class="category-header">select a category</div>
-                        <select id="category1" class="custom-select" multiple>
+                        <select id="category1" class="custom-select" multiple> 
                             <option id="school" value="1">&#xf19d;</option>
                             <option id="love" value="3">&#xf004;</option>
                             <option id="money" value="4">&#xf155;</option>
@@ -30,7 +30,7 @@
                         </select>
                     </div>
                     <div class="fix-container">
-                        <div class="fix-header">how do you think you can fix this?</div>
+                        <div class="fix-header">what could you do to feel better?</div>
                         <div class="input-group mb-3">
                             <input id="fix1" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
                         </div>
@@ -53,15 +53,16 @@
               <div id ="entry1" class="entry-row">
                   <div class="d-flex w-100 justify-content-between">
                       <div class="feelings-container">
-                          <div class="feelings-header">what's making you anxious?</div>
+                          <div class="feelings-header">stressors</div>
                           <div class="input-group mb-3">
-                              <input id="input2" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="input2" type="text" class="form-control" placeholder="too much homework" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="category-container">
-                          <div class="category-header">select a category</div>
-                          <select id="category2" class="custom-select" multiple>
-                              <option id="school" value="1">&#xf19d;</option>
+                          <div class="category-header">categories</div>
+                          <select id="category2" class="custom-select" multiple disabled>
+                              <option id="school" value="1" style="color: rgb(95, 140, 238);">&#xf19d;</option>
                               <option id="love" value="2">&#xf004;</option>
                               <option id="money" value="3">&#xf155;</option>
                               <option id="work" value="4">&#xf0b1;</option>
@@ -70,38 +71,56 @@
                           </select>
                       </div>
                       <div class="fix-container">
-                          <div class="fix-header">how do you think you can fix this?</div>
+                          <div class="fix-header">goals</div>
                           <div class="input-group mb-3">
-                              <input id="fix2" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="fix2" type="text" class="form-control" placeholder="start organizing my schedule" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="save-container">
-                          <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
                       </div>
                   </div>
               </div>
-          </li>
-        <li id="day2" class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-                <div class="title-container">
-                    <div class="day">friday</div>
-                    <div class="date">1/31/20</div>
-                </div>
-                <small>2 days ago</small>
-            </div>
-            <div id ="entry1" class="entry-row">
+              <div id ="entry2" class="entry-row">
                 <div class="d-flex w-100 justify-content-between">
                     <div class="feelings-container">
-                        <div class="feelings-header">what's making you anxious?</div>
                         <div class="input-group mb-3">
-                            <input id="input2" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
+                            <input id="input2" type="text" class="form-control" placeholder="rude coworker" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
                         </div>
                     </div>
                     <div class="category-container">
-                        <div class="category-header">select a category</div>
-                        <select id="category2" class="custom-select" multiple>
+                        <select id="category2" class="custom-select" multiple disabled>
                             <option id="school" value="1">&#xf19d;</option>
                             <option id="love" value="2">&#xf004;</option>
+                            <option id="money" value="3">&#xf155;</option>
+                            <option id="work" value="4" style="color: rgb(95, 140, 238);">&#xf0b1;</option>
+                            <option id="home" value="5">&#xf015;</option>
+                            <option id="world" value="6">&#xf0ac;</option>
+                        </select>
+                    </div>
+                    <div class="fix-container">
+                        <div class="input-group mb-3">
+                            <input id="fix2" type="text" class="form-control" placeholder="plan a meeting to discuss behavior" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="save-container">
+                    </div>
+                </div>
+            </div>
+            <div id ="entry3" class="entry-row">
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="feelings-container">
+                        <div class="input-group mb-3">
+                            <input id="input2" type="text" class="form-control" placeholder="moody girlfriend" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="category-container">
+                        <select id="category2" class="custom-select" multiple disabled>
+                            <option id="school" value="1">&#xf19d;</option>
+                            <option id="love" value="2" style="color: rgb(95, 140, 238);">&#xf004;</option>
                             <option id="money" value="3">&#xf155;</option>
                             <option id="work" value="4">&#xf0b1;</option>
                             <option id="home" value="5">&#xf015;</option>
@@ -109,18 +128,85 @@
                         </select>
                     </div>
                     <div class="fix-container">
-                        <div class="fix-header">how do you think you can fix this?</div>
                         <div class="input-group mb-3">
-                            <input id="fix2" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
+                            <input id="fix2" type="text" class="form-control" placeholder="plan something nice for her to cheer her up" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
                         </div>
                     </div>
                     <div class="save-container">
-                        <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
                     </div>
                 </div>
             </div>
-        </li>
-        <li id="day2" class="list-group-item list-group-item-action flex-column align-items-start">
+          </li>
+          <li id="day2" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                  <div class="title-container">
+                      <div class="day">friday</div>
+                      <div class="date">1/31/20</div>
+                  </div>
+                  <small>2 days ago</small>
+              </div>
+              <div id ="entry1" class="entry-row">
+                  <div class="d-flex w-100 justify-content-between">
+                      <div class="feelings-container">
+                          <div class="feelings-header">stressors</div>
+                          <div class="input-group mb-3">
+                              <input id="input2" type="text" class="form-control" placeholder="feeling broke" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
+                          </div>
+                      </div>
+                      <div class="category-container">
+                          <div class="category-header">categories</div>
+                          <select id="category2" class="custom-select" multiple disabled>
+                              <option id="school" value="1">&#xf19d;</option>
+                              <option id="love" value="2">&#xf004;</option>
+                              <option id="money" value="3" style="color: rgb(95, 140, 238);">&#xf155;</option>
+                              <option id="work" value="4">&#xf0b1;</option>
+                              <option id="home" value="5">&#xf015;</option>
+                              <option id="world" value="6">&#xf0ac;</option>
+                          </select>
+                      </div>
+                      <div class="fix-container">
+                          <div class="fix-header">goals</div>
+                          <div class="input-group mb-3">
+                              <input id="fix2" type="text" class="form-control" placeholder="start a monthly budget planner" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
+                          </div>
+                      </div>
+                      <div class="save-container">
+                      </div>
+                  </div>
+              </div>
+              <div id ="entry2" class="entry-row">
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="feelings-container">
+                        <div class="input-group mb-3">
+                            <input id="input2" type="text" class="form-control" placeholder="world war 3" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="category-container">
+                        <select id="category2" class="custom-select" multiple disabled>
+                            <option id="school" value="1">&#xf19d;</option>
+                            <option id="love" value="2">&#xf004;</option>
+                            <option id="money" value="3">&#xf155;</option>
+                            <option id="work" value="4">&#xf0b1;</option>
+                            <option id="home" value="5">&#xf015;</option>
+                            <option id="world" value="6" style="color: rgb(95, 140, 238);">&#xf0ac;</option>
+                        </select>
+                    </div>
+                    <div class="fix-container">
+                        <div class="input-group mb-3">
+                            <input id="fix2" type="text" class="form-control" placeholder="read more articles to educate myself" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="save-container">
+                    </div>
+                </div>
+            </div>
+          </li>
+          <li id="day2" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
                   <div class="title-container">
                       <div class="day">thursday</div>
@@ -131,33 +217,62 @@
               <div id ="entry1" class="entry-row">
                   <div class="d-flex w-100 justify-content-between">
                       <div class="feelings-container">
-                          <div class="feelings-header">what's making you anxious?</div>
+                          <div class="feelings-header">stressors</div>
                           <div class="input-group mb-3">
-                              <input id="input2" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="input2" type="text" class="form-control" placeholder="hostile parents" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="category-container">
-                          <div class="category-header">select a category</div>
-                          <select id="category2" class="custom-select" multiple>
+                          <div class="category-header">categories</div>
+                          <select id="category2" class="custom-select" multiple disabled>
                               <option id="school" value="1">&#xf19d;</option>
                               <option id="love" value="2">&#xf004;</option>
                               <option id="money" value="3">&#xf155;</option>
                               <option id="work" value="4">&#xf0b1;</option>
-                              <option id="home" value="5">&#xf015;</option>
+                              <option id="home" value="5" style="color: rgb(95, 140, 238);">&#xf015;</option>
                               <option id="world" value="6">&#xf0ac;</option>
                           </select>
                       </div>
                       <div class="fix-container">
-                          <div class="fix-header">how do you think you can fix this?</div>
+                          <div class="fix-header">goals</div>
                           <div class="input-group mb-3">
-                              <input id="fix2" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="fix2" type="text" class="form-control" placeholder="reach out to see what's wrong" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="save-container">
-                          <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
                       </div>
                   </div>
               </div>
+              <div id ="entry2" class="entry-row">
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="feelings-container">
+                        <div class="input-group mb-3">
+                            <input id="input2" type="text" class="form-control" placeholder="leaving dog home alone" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="category-container">
+                        <select id="category2" class="custom-select" multiple disabled>
+                            <option id="school" value="1">&#xf19d;</option>
+                            <option id="love" value="2">&#xf004;</option>
+                            <option id="money" value="3">&#xf155;</option>
+                            <option id="work" value="4">&#xf0b1;</option>
+                            <option id="home" value="5" style="color: rgb(95, 140, 238);">&#xf015;</option>
+                            <option id="world" value="6">&#xf0ac;</option>
+                        </select>
+                    </div>
+                    <div class="fix-container">
+                        <div class="input-group mb-3">
+                            <input id="fix2" type="text" class="form-control" placeholder="ask friends to dogsit" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="save-container">
+                    </div>
+                </div>
+            </div>
           </li>
           <li id="day2" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
@@ -170,30 +285,31 @@
               <div id ="entry1" class="entry-row">
                   <div class="d-flex w-100 justify-content-between">
                       <div class="feelings-container">
-                          <div class="feelings-header">what's making you anxious?</div>
+                          <div class="feelings-header">stressors</div>
                           <div class="input-group mb-3">
-                              <input id="input2" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="input2" type="text" class="form-control" placeholder="coronavirus" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="category-container">
-                          <div class="category-header">select a category</div>
-                          <select id="category2" class="custom-select" multiple>
+                          <div class="category-header">categories</div>
+                          <select id="category2" class="custom-select" multiple disabled>
                               <option id="school" value="1">&#xf19d;</option>
                               <option id="love" value="2">&#xf004;</option>
                               <option id="money" value="3">&#xf155;</option>
                               <option id="work" value="4">&#xf0b1;</option>
                               <option id="home" value="5">&#xf015;</option>
-                              <option id="world" value="6">&#xf0ac;</option>
+                              <option id="world" value="6" style="color: rgb(95, 140, 238);">&#xf0ac;</option>
                           </select>
                       </div>
                       <div class="fix-container">
-                          <div class="fix-header">how do you think you can fix this?</div>
+                          <div class="fix-header">goals</div>
                           <div class="input-group mb-3">
-                              <input id="fix2" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="fix2" type="text" class="form-control" placeholder="order facemasks and hand sanitizer asap" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="save-container">
-                          <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
                       </div>
                   </div>
               </div>
@@ -206,35 +322,8 @@
                   </div>
                   <small>5 days ago</small>
               </div>
-              <div id ="entry1" class="entry-row">
-                  <div class="d-flex w-100 justify-content-between">
-                      <div class="feelings-container">
-                          <div class="feelings-header">what's making you anxious?</div>
-                          <div class="input-group mb-3">
-                              <input id="input2" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
-                          </div>
-                      </div>
-                      <div class="category-container">
-                          <div class="category-header">select a category</div>
-                          <select id="category2" class="custom-select" multiple>
-                              <option id="school" value="1">&#xf19d;</option>
-                              <option id="love" value="2">&#xf004;</option>
-                              <option id="money" value="3">&#xf155;</option>
-                              <option id="work" value="4">&#xf0b1;</option>
-                              <option id="home" value="5">&#xf015;</option>
-                              <option id="world" value="6">&#xf0ac;</option>
-                          </select>
-                      </div>
-                      <div class="fix-container">
-                          <div class="fix-header">how do you think you can fix this?</div>
-                          <div class="input-group mb-3">
-                              <input id="fix2" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
-                          </div>
-                      </div>
-                      <div class="save-container">
-                          <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
-                      </div>
-                  </div>
+              <div>
+                  <h5 style="text-align: center; font-style: italic">congrats, you had a good day!</h5>
               </div>
           </li>
           <li id="day2" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -248,15 +337,16 @@
               <div id ="entry1" class="entry-row">
                   <div class="d-flex w-100 justify-content-between">
                       <div class="feelings-container">
-                          <div class="feelings-header">what's making you anxious?</div>
+                          <div class="feelings-header">stressors</div>
                           <div class="input-group mb-3">
-                              <input id="input2" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="input2" type="text" class="form-control" placeholder="feeling isolated on campus" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="category-container">
-                          <div class="category-header">select a category</div>
-                          <select id="category2" class="custom-select" multiple>
-                              <option id="school" value="1">&#xf19d;</option>
+                          <div class="category-header">categories</div>
+                          <select id="category2" class="custom-select" multiple disabled>
+                              <option id="school" value="1" style="color: rgb(95, 140, 238);">&#xf19d;</option>
                               <option id="love" value="2">&#xf004;</option>
                               <option id="money" value="3">&#xf155;</option>
                               <option id="work" value="4">&#xf0b1;</option>
@@ -265,16 +355,44 @@
                           </select>
                       </div>
                       <div class="fix-container">
-                          <div class="fix-header">how do you think you can fix this?</div>
+                          <div class="fix-header">goals</div>
                           <div class="input-group mb-3">
-                              <input id="fix2" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
+                              <input id="fix2" type="text" class="form-control" placeholder="join a new club" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                              style="font-weight: bolder;">
                           </div>
                       </div>
                       <div class="save-container">
-                          <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
                       </div>
                   </div>
               </div>
+              <div id ="entry2" class="entry-row">
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="feelings-container">
+                        <div class="input-group mb-3">
+                            <input id="input2" type="text" class="form-control" placeholder="pulled an all-nighter" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="category-container">
+                        <select id="category2" class="custom-select" multiple disabled>
+                            <option id="school" value="1" style="color: rgb(95, 140, 238);">&#xf19d;</option>
+                            <option id="love" value="2">&#xf004;</option>
+                            <option id="money" value="3">&#xf155;</option>
+                            <option id="work" value="4">&#xf0b1;</option>
+                            <option id="home" value="5">&#xf015;</option>
+                            <option id="world" value="6">&#xf0ac;</option>
+                        </select>
+                    </div>
+                    <div class="fix-container">
+                        <div class="input-group mb-3">
+                            <input id="fix2" type="text" class="form-control" placeholder="stop procrastinating so much!" aria-label="feelings" aria-describedby="basic-addon2" disabled
+                            style="font-weight: bolder;">
+                        </div>
+                    </div>
+                    <div class="save-container">
+                    </div>
+                </div>
+            </div>
           </li>
     </ul>
 </div>

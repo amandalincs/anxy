@@ -19,7 +19,7 @@
         .list-group-item {
             margin: 10px 0;
             border-radius: 10px;
-            min-height: 250px;
+            // min-height: 150px;
 
             .title-container {
                 padding-bottom: 10px;
@@ -77,9 +77,13 @@
                     padding: 0;
                     background: rgba(255,255,255,0);
 
+                    #school, #love, #money, #work, #home {
+                        margin-right: 12.63px;
+                    }
+
                     option {
                         float: left;
-                        padding-right: 12px;
+                        padding-right: 3px;
                         font-size: 35px;
                         color: rgb(185, 204, 245);
                     }
@@ -96,6 +100,7 @@
 
             .save-container {
                 padding-top: 35px;
+                width: 40px;
                 .btn {
                     border-radius: 50%;
                 }
