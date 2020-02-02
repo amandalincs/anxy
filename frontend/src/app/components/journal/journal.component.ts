@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { formatDate } from '@angular/common';
 
 @Component({
     selector: 'app-journal',
@@ -11,10 +12,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class JournalComponent implements OnInit {
 
     readonly ROOT_URL = 'http://127.0.0.1:5000/api';
-    newPost: any;
-    constructor(private http : HttpClient) {}
+    dayPosts: Object;
+    front_todaysDate: string;
+    back_todaysDate: string;
+    constructor(private http : HttpClient)
+    {
+        // this.todaysDate = this.datePipe.transform(this.todaysDate, 'yyyy-MM-dd');
+    }
+    // constructor(private http : HttpClient) {}
 
-    ngOnInit(){}
+    ngOnInit(){
+        this.front_todaysDate = formatDate(new Date(), 'M/d/yy', 'en');
+        this.back_todaysDate = formatDate(new Date(), 'MM/dd/yyyy', 'en');
+        this.getDayPosts(this.back_todaysDate);
+    }
 
     submitEntry()
     {
@@ -32,11 +43,13 @@ export class JournalComponent implements OnInit {
         this.http.post(this.ROOT_URL+'/posts/', userData).subscribe();
     }
 
-    // getDayPosts()
-    // {
-    //     this.http.get(this.ROOT_URL+"/posts/2/2/2020")
-    //     // this.http.get(this.ROOT_URL+"/posts/"+month.toString()+"/"+day.toString()+"/"+year.toString())
-    // }
+    getDayPosts(dateString)
+    {
+        // this.http.get(this.ROOT_URL+"/posts/2/2/2020")
+        this.http.get(this.ROOT_URL+"/posts/"+dateString).subscribe(
+            data => {this.dayPosts = data;}
+        );
+    }
 
     addEntryRow()
     {
