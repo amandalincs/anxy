@@ -139,7 +139,7 @@ def db_get_posts_by_date(month, day, year):
     date_str = f"{year}-{month}-{day}"
     print(date_str)
     get_stmt = ("SELECT * FROM posts "
-                "WHERE day < (%s)")
+                "WHERE day = (%s)")
     
     cur.execute(get_stmt, (date_str,))
     day_posts = cur.fetchall()
