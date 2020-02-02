@@ -1,0 +1,35 @@
+.bg-company-white {
+    .navbar-brand {
+        width: 150px;
+        margin-left: 90px;
+        margin-right: 250px;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+}
+
+.navbar-nav {
+    .nav-item {
+        margin-right: 60px;
+        position: relative;
+    }
+
+    .nav-link {
+        font-size: 35px;
+        position: relative;
+        color: white;
+        transition: color .2s;
+
+        // &:hover {
+        //     color: rgb(247, 204, 232);
+        // }
+    }
+
+    .nav-link.active {
+        color: rgb(247, 204, 232);
+        font-weight: bold;
+    }
+}
