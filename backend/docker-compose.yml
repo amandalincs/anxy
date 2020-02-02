@@ -11,18 +11,40 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - "./mysql/volumes/volume_test1:/var/lib/mysql"
+      - "./mysql/volumes/:/var/lib/mysql"
   
-  flask:
-    build: ./flask
-    container_name: flask
-    # restart: always
-    expose:
-      - 8000
+  # flask:
+  #   build: ./flask
+  #   container_name: flask
+  #   # restart: always
+  #   environment:
+  #     - FLASK_APP=run.py
+  #   ports:
+  #     - "5000:5000"
+  #   # expose:
+  #   #   - "8000"
     
-  nginx:
-    build: ./nginx
-    container_name: nginx
-    # restart: always
-    ports:
-      - "80"
+    
+  # nginx:
+  #   build: ./nginx
+  #   container_name: nginx
+  #   # restart: always
+  #   ports:
+  #     - "80"
+
+  # CREATE TABLE categories (
+  #   c_id int auto_increment primary key,
+  #   category varchar(255)
+  # );
+
+  # CREATE TABLE posts (
+  #   p_id int auto_increment primary key,
+  #   date smalldatetime,
+  #   bothering varchar(255),
+  #   c_id int,
+  #   foreign key (c_id) references categories(c_id),
+  #   goal varchar(255),
+  #   done boolean
+  # );
+
+  
