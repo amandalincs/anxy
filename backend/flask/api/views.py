@@ -106,16 +106,16 @@ def add_post():
 
     if not request.json:
         print("not a json")
-        #abort(400)
+        abort(400)
     if 'bothering' not in request.json:
         print("bothering")
-        #abort(400)
+        abort(400)
     if 'c_id' not in request.json:
         print("c_id")
-        #abort(400)
+        abort(400)
     if 'goal' not in request.json:
         print("goal")
-        #abort(400)
+        abort(400)
     
     db_create_post(request.json['bothering'], int(request.json['c_id']), request.json['goal'])
 
