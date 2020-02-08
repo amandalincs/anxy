@@ -1,11 +1,12 @@
 <div class="journal-container">
     <ul id="days-list" class="list-group">
+
         <li id="day1" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
                 <div class="title-container">
                     <i class="fas fa-sun"></i>
                     <div class="day">sunday</div>
-                    <div class="date">2/2/20</div>
+                    <div class="date">{{ front_todaysDate }}</div>
                     <button class="btn btn-outline-secondary" (click)="addEntryRow()" type="button"><i class="fas fa-plus"></i></button>
                 </div>
                 <small>today</small>
@@ -14,9 +15,11 @@
                 <div class="d-flex w-100 justify-content-between">
                     <div class="feelings-container">
                         <div class="feelings-header">what's making you anxious?</div>
+
                         <div class="input-group mb-3">
                             <input id="input1" type="text" class="form-control" placeholder="ex: john's big party" aria-label="feelings" aria-describedby="basic-addon2">
                         </div>
+
                     </div>
                     <div class="category-container">
                         <div class="category-header">select a category</div>
@@ -31,17 +34,20 @@
                     </div>
                     <div class="fix-container">
                         <div class="fix-header">what could you do to feel better?</div>
+
                         <div class="input-group mb-3">
                             <input id="fix1" type="text" class="form-control" placeholder="ex: try to socialize more" aria-label="feelings" aria-describedby="basic-addon2">
                         </div>
+                        
                     </div>
                     <div class="save-container">
                         <button class="btn btn-outline-secondary" (click)="submitEntry()" type="button"><i class="fas fa-check"></i></button>
-                        <!-- <button class="btn btn-outline-secondary" (click)="getDayPosts()" type="button"><i class="fas fa-check"></i></button> -->
                     </div>
                 </div>
             </div>
         </li>
+
+
           <li id="day2" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
                   <div class="title-container">

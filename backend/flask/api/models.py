@@ -1,6 +1,8 @@
 import mysql.connector as mysql
 
-def db_connect_():
+##### helpers ######
+
+def db_connect():
     con = mysql.connect(
         host = "mysql-dev",
         port = "3306",
@@ -11,7 +13,7 @@ def db_connect_():
     cur = con.cursor()
     return con, cur
 
-def db_connect():
+def db_connect_local():
     con = mysql.connect(
         host = "127.0.0.1",
         port = "3308",
@@ -82,6 +84,7 @@ def db_delete_cat(cat_id):
     db_close(con,cur)
     
 ##### posts #####
+
 def db_get_all_posts():
     con, cur = db_connect()
     get_stmt = ("SELECT * FROM posts")
