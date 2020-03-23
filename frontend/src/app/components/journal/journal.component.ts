@@ -12,19 +12,20 @@ import { formatDate } from '@angular/common';
 export class JournalComponent implements OnInit {
 
     readonly ROOT_URL = 'http://127.0.0.1:5000/api';
-    dayPosts: Object;
-    front_todaysDate: string;
-    back_todaysDate: string;
+    todaysPosts: any[] = new Array();
+    pastPosts: any[] = new Array();
+    categories: any[] = new Array();
+    todaysDate: string;
+    start = 1;
     constructor(private http : HttpClient)
     {
-        // this.todaysDate = this.datePipe.transform(this.todaysDate, 'yyyy-MM-dd');
+        
     }
-    // constructor(private http : HttpClient) {}
 
     ngOnInit(){
-        this.front_todaysDate = formatDate(new Date(), 'M/d/yy', 'en');
-        this.back_todaysDate = formatDate(new Date(), 'MM/dd/yyyy', 'en');
-        this.getDayPosts(this.back_todaysDate);
+        this.todaysDate = formatDate(new Date(), 'M/d/yy', 'en');
+        this.getTodaysPosts();
+        this.getMorePosts(6);
     }
 
     submitEntry()
@@ -41,14 +42,29 @@ export class JournalComponent implements OnInit {
         console.log(JSON.stringify(userData));
         
         this.http.post(this.ROOT_URL+'/posts/', userData).subscribe();
+        location.reload();
     }
 
-    getDayPosts(dateString)
+    getTodaysPosts()
     {
-        // this.http.get(this.ROOT_URL+"/posts/2/2/2020")
-        this.http.get(this.ROOT_URL+"/posts/"+dateString).subscribe(
-            data => {this.dayPosts = data;}
+        this.http.get(this.ROOT_URL+"/posts/today").subscribe(
+            data => {this.todaysPosts = data['posts'];}
         );
+    }
+
+    getMorePosts(numPosts)
+    {
+        for (let i = this.start; i < this.start+numPosts; i++)
+        {
+            // this.http.get(this.ROOT_URL+"/posts/days_before/"+String(i)).subscribe(
+            //     data => {console.log(data);}
+            this.http.get(this.ROOT_URL+"/posts/days_before/"+String(i)).subscribe(
+                data => {this.pastPosts.push(data);}
+            );
+        }
+        console.log(this.pastPosts);
+        this.start += numPosts;
+        // console.log(this.pastPosts);
     }
 
     addEntryRow()

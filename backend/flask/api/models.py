@@ -2,25 +2,25 @@ import mysql.connector as mysql
 
 ##### helpers ######
 
-def db_connect():
-    con = mysql.connect(
-        host = "mysql-dev",
-        port = "3306",
-        user = "root",
-        password = "password",
-        database = "dbtest"
-    )
-    cur = con.cursor()
-    return con, cur
+local = True
 
-def db_connect_local():
-    con = mysql.connect(
-        host = "127.0.0.1",
-        port = "3308",
-        user = "root",
-        password = "password",
-        database = "dbtest"
-    )
+def db_connect():
+    if local:
+        con = mysql.connect(
+            host = "127.0.0.1",
+            port = "3308",
+            user = "root",
+            password = "password",
+            database = "dbtest"
+        )
+    else:
+        con = mysql.connect(
+            host = "mysql-dev",
+            port = "3306",
+            user = "root",
+            password = "password",
+            database = "dbtest"
+        )
     cur = con.cursor()
     return con, cur
 
@@ -137,16 +137,24 @@ def db_delete_post(p_id):
 
     db_close(con, cur)
 
-def db_get_posts_by_date(month, day, year):
+def db_get_posts_before_today(days_before_today):
     con, cur = db_connect()
-    date_str = f"{year}-{month}-{day}"
-    print(date_str)
     get_stmt = ("SELECT * FROM posts "
-                "WHERE day = (%s)")
+                "WHERE day = (DATE_SUB(CURDATE(), INTERVAL (%s) DAY))")
     
-    cur.execute(get_stmt, (date_str,))
+    cur.execute(get_stmt, (days_before_today,))
     day_posts = cur.fetchall()
-    print(day_posts)
 
     db_close(con, cur)
     return day_posts
+
+def db_get_categories():
+    con, cur = db_connect()
+    get_stmt = ("SELECT * FROM categories")
+    
+    cur.execute(get_stmt)
+    categories = fetchall()
+    print(categories)
+    
+    db_close(con, cur)
+    return categories

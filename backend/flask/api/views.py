@@ -1,7 +1,7 @@
 from flask import jsonify, request, abort, make_response
 
 from api import app
-from .models import db_get_all_cat, db_get_cat, db_create_cat, db_edit_cat, db_delete_cat, db_get_all_posts, db_get_post, db_create_post, db_edit_post, db_delete_post,  db_get_posts_by_date
+from .models import db_get_all_cat, db_get_cat, db_create_cat, db_edit_cat, db_delete_cat, db_get_all_posts, db_get_post, db_create_post, db_edit_post, db_delete_post,  db_get_posts_before_today, db_get_categories
 
 
 @app.errorhandler(404)
@@ -141,17 +141,36 @@ def edit_post(post_id):
 
     return jsonify({"Results":"True"})
     
-# @app.route("/api/posts/", methods=['DELETE'])
-
-@app.route("/api/posts/<int:month>/<int:day>/<int:year>", methods=['GET'])
-def get_posts_by_date(month, day, year):
-    posts = db_get_posts_by_date(month, day, year)
-    json = []
+@app.route("/api/posts/today", methods=['GET'])
+def get_posts_today():
+    posts = db_get_posts_before_today(0)
+    posts_list = []
     for _,_,bothering,c_id,goal,_ in posts:
         temp = {}
         temp['bothering'] = bothering
         temp['category_id'] = c_id
         temp['goal'] = goal
-        json.append(temp)
+        posts_list.append(temp)
     
-    return jsonify({'posts':json})
+    return jsonify({'posts':posts_list})
+
+@app.route("/api/posts/days_before/<int:days_before>", methods=['GET'])
+def get_posts_before_today(days_before):
+    posts = db_get_posts_before_today(days_before)
+    posts_list = []
+    for _,_,bothering,c_id,goal,_ in posts:
+        temp = {}
+        temp['bothering'] = bothering
+        temp['category_id'] = c_id
+        temp['goal'] = goal
+        posts_list.append(temp)
+    
+    return jsonify({'posts':posts_list})
+
+@app.route("/api/categories", methods=['GET'])
+def get_categories():
+    print("WORKING!")
+    categories = db_get_categories()
+    print(categories)
+    
+    return jsonify({'categories':categories})
